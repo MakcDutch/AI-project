@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tello-nav"
+version = "0.1.0"
+description = "Metric depth reactive controller and offline Tello replay"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "opencv-python>=4.8"]
+
+[project.optional-dependencies]
+live = ["djitellopy>=2.5"]
+
+[project.scripts]
+tello-replay = "tello_nav.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["tello_nav*"]

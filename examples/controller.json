@@ -1,0 +1,19 @@
+{
+  "min_distance_m": 1.0,
+  "hysteresis_m": 0.25,
+  "max_frame_age_s": 0.5,
+  "brake_duration_s": 0.3,
+  "avoid_hold_s": 0.5,
+  "recovery_frames": 2,
+  "command_limit": 20,
+  "forward_speed": 15,
+  "lateral_speed": 10,
+  "allow_lateral": false,
+  "sectors": {
+    "roi": [0.0, 0.2, 1.0, 0.85],
+    "boundaries": [0.3333333333333333, 0.6666666666666666],
+    "percentile": 10.0,
+    "min_coverage": 0.9,
+    "min_valid_pixels": 16
+  }
+}
