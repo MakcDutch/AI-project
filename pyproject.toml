@@ -16,4 +16,4 @@ live = ["djitellopy>=2.5"]
 tello-replay = "tello_nav.cli:main"
 
 [tool.setuptools.packages.find]
-include = ["tello_nav*"]
+include = ["tello_nav*", "src", "src.calibration", "src.depth_models"]

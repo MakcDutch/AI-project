@@ -30,7 +30,8 @@ class ReplayViewer:
         width = max(1000, joined.shape[1])
         canvas = np.zeros((joined.shape[0] + 90, width, 3), np.uint8)
         canvas[:joined.shape[0], :joined.shape[1]] = joined
-        lines = [f"frame={frame.index} t={frame.timestamp:.3f}s ({frame.timestamp_source}) age={record['frame_age_s']:.3f}s",
+        origin = record.get("prediction", {}).get("prediction_origin", record.get("depth_model", "unknown"))
+        lines = [f"frame={frame.index} t={frame.timestamp:.3f}s ({frame.timestamp_source}) age={record['frame_age_s']:.3f}s source={origin}",
                  f"{record['controller_state']} {record['command']}", record['reason']]
         for i, line in enumerate(lines):
             cv2.putText(canvas, line, (8, joined.shape[0] + 20 + i * 25),

@@ -1,5 +1,14 @@
 # Controller, Replay Stand, and Tello integration
 
+The current team workflow is external inference on Yarema's computer and strict
+prediction import on Marko's computer. See
+[TEAM_INTEGRATION_HANDOFF.md](TEAM_INTEGRATION_HANDOFF.md) for the versioned
+JSON/float32-NPY contract, exporter, calibration checks and runnable handoff demos.
+No local model installation or inference is needed for this path.
+
+See [INTEGRATION_REVIEW.md](INTEGRATION_REVIEW.md) for the October 23 repository
+audit, teammate changes, model adapter status, test results and runnable demos.
+
 ## Repository inspection and scope
 
 Before implementation, the repository contained only `README.md`, the Ukrainian
@@ -47,7 +56,7 @@ The same controller -> MockDroneAdapter (default)
 ```
 
 `tello_nav/controller` has no OpenCV or drone SDK dependency. `replay` never
-imports the live adapter and has no option that transmits commands. `drone`
+constructs a live adapter or imports DJITelloPy and has no hardware transmission option. `drone`
 validates commands at the hardware boundary independently of the controller.
 A new controller instance is created for each replay scenario/run.
 
@@ -70,10 +79,13 @@ stops if any sector has inadequate coverage. Small holes below that threshold
 remain an explicitly accepted uncertainty; increase `min_coverage` to 1 to
 require complete observations in the ROI.
 
-Neither Depth Anything 3 nor Metric3D is implemented in this repository.
-There is deliberately no fabricated model adapter or scaling factor. Both
-can connect through `CallableDepthProvider` when Yarema supplies a validated
-metric inference function:
+Yarema's wrappers now exist in `src/depth_models/da3.py` and `metric3d.py`.
+`TeamModelDepthProvider` in `tello_nav/replay/model_provider.py` adapts their
+existing `predict(rgb, fx)` methods without a second metric scaling step.
+It requires explicit calibration and matching aspect/orientation; invalid
+values and Metric3D's 300m saturation are unknown. Real inference remains
+unverified here because model dependencies/weights and source images are absent.
+`CallableDepthProvider` remains available for another already validated function:
 
 ```python
 from tello_nav.replay.providers import CallableDepthProvider
@@ -86,8 +98,12 @@ rows = ReplayRunner(provider).run(VideoReader("data/corridor.avi"), "corridor")
 # Switch to Depth Anything 3 by supplying its validated function and variant name.
 ```
 
-This is a programmatic inference integration point; there is no working
-`--model metric3d` or `--model da3` flag. Before connecting either model, document
+The CLI accepts `--depth-model da3` or `--depth-model metric3d` with `--calibration`.
+Their existing constructors may fetch weights and external code; they are blocked
+unless `--allow-model-download` is explicitly selected. That flag is authorization
+to fetch dependencies/weights through those constructors, not proof of readiness.
+The supplied `results/calib_iphone_960.json` is not Tello calibration. No default
+camera calibration is selected. Before real inference, verify
 its exact checkpoint/variant, public API, input color/normalization, resize/pad
 and crop transformations, camera intrinsics (including transformed focal length),
 output units, scale treatment, Z versus ray-depth convention, and invalid/confidence
@@ -229,7 +245,13 @@ python -m tello_nav --manifest data/scenarios.json --output outputs/scenarios.js
 ```
 
 Each entry needs a unique `id`, `video`, optional `timestamps`, and exactly one
-of `depth_dir` or `mock_depth`. `model_name` labels provenance, not a model loader.
+of `depth_dir`, `mock_depth`, `depth_model`, or `predictions`. Imported prediction
+entries require `calibration`, `calibration_id`, and `camera_id`; see the handoff
+guide for provenance requirements and explicit synthetic opt-in. Model entries additionally require
+`calibration`; its path is also relative to the manifest. `--device` and model
+download authorization apply to the whole run. Matching model/calibration/device
+providers are reused across scenarios; controller state is reset for each.
+`model_name` labels precomputed provenance, not a model loader.
 
 ## Timing, latency, and step-by-step processing
 
@@ -284,6 +306,21 @@ are written on successful completion; input-validation failure interrupts the
 run instead of exporting a misleading complete result. Output paths are user
 selected and existing output files are replaced.
 
+`--mock-drone` executes each replay command through a `MockDroneAdapter` in the
+replay clock domain. Logs add `mock_execution` with acceptance, inhibition,
+errors and the effective mock command. The adapter's .3s freshness/watchdog
+limit is independent of the controller's .5s default; its stricter limit may
+reject a command that the controller permits. A mock timeout latches STOP
+until operator reset (or a new scenario); recorded frames continue unchanged.
+Replay can never select a live adapter.
+
+Generate a reproducible, explicitly synthetic video/depth demonstration:
+
+```sh
+python -m examples.create_replay_fixture
+python -m tello_nav --manifest outputs/integration_demo/scenarios.json --mock-drone --output outputs/integration_demo/replay.json
+```
+
 Add `--visualize` for RGB and depth panels, ROI/sector boundaries, sector
 distances and coverage, state, command, timestamp and frame age. Depth colors
 clip at 10 meters; black pixels are invalid, not free. Press q or Escape to end
@@ -307,6 +344,8 @@ original observation timestamp. Send rechecks all four RC channel bounds and
 STOP/BRAKE zero-motion rules. The default adapter limit is 20 and freshness
 limit .3 seconds. Controller and adapter limits can be configured independently;
 the stricter boundary wins.
+Older command or observation timestamps are rejected even within the freshness
+window, preventing a late result from superseding a newer command.
 
 A background live watchdog checks freshness independently of inference, and
 latches STOP on timeout. Send failures latch inhibition and attempt zero RC;

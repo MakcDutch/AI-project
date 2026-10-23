@@ -20,6 +20,7 @@ class MockDroneAdapter:
         self.commands: list[ControlCommand] = []
         self.last_received: float | None = None
         self.last_observation: float | None = None
+        self.last_command_timestamp: float | None = None
         self.last_error: str | None = None
         self.lock = threading.RLock()
 
@@ -55,9 +56,13 @@ class MockDroneAdapter:
                 if (not math.isfinite(now) or any(not math.isfinite(t) or not 0 <= now - t <= self.freshness_s
                         for t in (timestamp, observation_timestamp)) or observation_timestamp > timestamp):
                     raise ValueError("stale, future or invalid command/observation timestamp")
+                if ((self.last_observation is not None and observation_timestamp < self.last_observation)
+                        or (self.last_command_timestamp is not None and timestamp < self.last_command_timestamp)):
+                    raise ValueError("out-of-order command or observation")
                 self._emit(command)
                 self.last_received = now
                 self.last_observation = observation_timestamp
+                self.last_command_timestamp = timestamp
                 return True
             except Exception as exc:
                 self.last_error = str(exc)
@@ -94,6 +99,7 @@ class MockDroneAdapter:
             self.inhibited = False
             self.last_received = self.clock()
             self.last_observation = None
+            self.last_command_timestamp = None
 
     def telemetry(self) -> dict:
         return {"timestamp": self.clock(), "reliable": False, "source": "mock"}

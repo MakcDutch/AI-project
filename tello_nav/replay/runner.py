@@ -4,6 +4,7 @@ import time
 from typing import Callable, Iterable, Iterator
 
 from tello_nav.controller import ControllerConfig, ReactiveController
+from tello_nav.drone import MockDroneAdapter
 from .logging import plain
 from .providers import DepthProvider, validate_depth
 from .video import Frame
@@ -41,11 +42,12 @@ class ReplayRunner:
     def __init__(self, provider: DepthProvider, controller_config: ControllerConfig | None = None,
                  config: ReplayConfig | None = None,
                  clock: Callable[[], float] = time.monotonic,
-                 sleep: Callable[[float], None] = time.sleep):
+                 sleep: Callable[[float], None] = time.sleep, *, mock_drone: bool = False):
         self.provider = provider
         self.controller_config = controller_config or ControllerConfig()
         self.config = config or ReplayConfig()
         self.clock, self.sleep = clock, sleep
+        self.mock_drone = mock_drone
         if self.config.mode == "offline" and (
             self.config.inference_delay_s or self.config.communication_delay_s
         ):
@@ -56,6 +58,10 @@ class ReplayRunner:
         cfg = self.config
         decision_time = 0.0
         controller = ReactiveController(self.controller_config, clock=lambda: decision_time)
+        drone = MockDroneAdapter(clock=lambda: decision_time,
+                                 command_limit=self.controller_config.command_limit) if self.mock_drone else None
+        if drone:
+            drone.connect()
         wall_start = self.clock()
         first_timestamp = None
         previous_timestamp = None
@@ -104,6 +110,13 @@ class ReplayRunner:
                     decision_time = start + simulated
                 ready_at = decision_time
                 command = controller.compute(depth, arrival)
+                mock_execution = None
+                if drone:
+                    drone.watchdog()
+                    accepted = drone.send(command, timestamp=decision_time, observation_timestamp=arrival)
+                    mock_execution = {"accepted": accepted, "inhibited": drone.inhibited,
+                                      "error": drone.last_error,
+                                      "effective_command": plain(drone.commands[-1]) if drone.commands else None}
                 record = {
                     "scenario_id": scenario_id, "frame_index": frame.index,
                     "frame_timestamp_s": frame.timestamp, "timestamp_source": frame.timestamp_source,
@@ -117,11 +130,18 @@ class ReplayRunner:
                     "dropped": dropped, "error": error,
                     "safety_event": command.reason if command.state in {"STOP", "BRAKE"} else None,
                 }
+                if drone:
+                    record["mock_execution"] = mock_execution
+                frame_metadata = getattr(self.provider, "frame_metadata", None)
+                if callable(frame_metadata):
+                    record["prediction"] = frame_metadata(frame)
                 if viewer and not viewer.show(frame, depth, record):
                     yield record
                     break
                 yield record
         finally:
+            if drone:
+                drone.close()
             if viewer:
                 viewer.close()
 
@@ -129,6 +149,11 @@ class ReplayRunner:
         return list(self.iter_records(frames, scenario_id, visualize))
 
     def metadata(self) -> dict:
-        return plain({"schema_version": 1, "provider": self.provider.name,
+        metadata = {"schema_version": 1, "provider": self.provider.name,
                       "controller_config": self.controller_config, "replay_config": self.config,
-                      "determinism": "offline/virtual decisions deterministic; measured runtime is observational"})
+                      "mock_drone": self.mock_drone,
+                      "determinism": "offline/virtual decisions deterministic; measured runtime is observational"}
+        provider_metadata = getattr(self.provider, "metadata", None)
+        if callable(provider_metadata):
+            metadata["provider_metadata"] = provider_metadata()
+        return plain(metadata)

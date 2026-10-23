@@ -59,6 +59,10 @@ class NpyDepthProvider:
     def predict(self, frame: Frame) -> np.ndarray:
         return validate_depth(np.load(self.directory / f"{frame.index:06d}.npy", allow_pickle=False), frame)
 
+    def metadata(self) -> dict:
+        return {"source": "legacy_indexed_npy", "metric_evaluation_eligible_by_metadata": False,
+                "verification_limit": "no exchange metadata; units, calibration and identity are caller assertions"}
+
 
 class MockDepthProvider:
     """Synthetic camera-Z meters; no learned inference."""
