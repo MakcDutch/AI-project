@@ -1,0 +1,230 @@
+{
+  "kind": "actual PX4/Gazebo final flight verification",
+  "date": "2026-10-24",
+  "target_real_time_factor": 0.25,
+  "tests": {
+    "discovered": 119,
+    "passed": 119,
+    "skipped": 0,
+    "elapsed_s": 6.558
+  },
+  "experiments": {
+    "clear": {
+      "experiment": "clear",
+      "success": true,
+      "error": null,
+      "measurement_gaps": false,
+      "collision": false,
+      "contact_monitor_verified": true,
+      "actual_stopping_distance_m": null,
+      "detection_to_stop_s": null,
+      "peak_velocity_m_s": 0.46769620508348525,
+      "travel_m": 1.0056566618958658,
+      "depth_decreased": true,
+      "safety_events": [],
+      "final_controller_state": "FORWARD",
+      "final_flight_mode": "OFFBOARD",
+      "final_vehicle_state": "landed_disarmed",
+      "navigation_minimum_clearance_m": 4.438952747385622,
+      "full_flight_minimum_clearance_m": 4.021670638203153,
+      "commanded_forward_m_s": 0.44999999999999996,
+      "collision_event_count": 0,
+      "maximum_full_flight_altitude_m": 1.4738831510824992,
+      "evidence": {
+        "outputs/simulation/clear.json": "45e52374a1bdc713c4f758d7d1b487d57084326dc57e964ba782f62c568ad094",
+        "outputs/simulation/clear.ulg": "f2d521f0670eb9c8f11693cfb6c5b984ee28796f8e183afacf9f521ad192fe92",
+        "outputs/simulation/clear.png": "9b53c6842045565787f751fe613785165680c22f32f77d6878760c92dc4bf87e"
+      }
+    },
+    "wall": {
+      "experiment": "wall",
+      "success": true,
+      "error": null,
+      "measurement_gaps": false,
+      "collision": false,
+      "contact_monitor_verified": true,
+      "actual_stopping_distance_m": 0.2788446195278811,
+      "detection_to_stop_s": 0.9839999999999947,
+      "peak_velocity_m_s": 0.4721891943655588,
+      "travel_m": 4.177801451413378,
+      "depth_decreased": true,
+      "safety_events": [],
+      "final_controller_state": "BRAKE",
+      "final_flight_mode": "OFFBOARD",
+      "final_vehicle_state": "landed_disarmed",
+      "navigation_minimum_clearance_m": 1.3338022677796895,
+      "full_flight_minimum_clearance_m": 1.332425836670044,
+      "commanded_forward_m_s": 0.44999999999999996,
+      "collision_event_count": 0,
+      "maximum_full_flight_altitude_m": 1.4611903771368226,
+      "evidence": {
+        "outputs/simulation/wall.json": "f48957a99960764245332b194856728fd18e84e17e15f9c900dfcdecc1b15a2c",
+        "outputs/simulation/wall.ulg": "d15e973a73b065031d16ac91695aee09c66d8583d7381524a9d86df46e149f7e",
+        "outputs/simulation/wall.png": "91225babc80717665d948427a745332d8841f1299bf9c8f5674565b60a50dce7"
+      }
+    },
+    "stale": {
+      "experiment": "stale",
+      "success": true,
+      "error": null,
+      "measurement_gaps": false,
+      "collision": false,
+      "contact_monitor_verified": true,
+      "actual_stopping_distance_m": 0.2710805153371436,
+      "detection_to_stop_s": 1.0360000000000014,
+      "peak_velocity_m_s": 0.4604085949302198,
+      "travel_m": 1.779343929131907,
+      "depth_decreased": true,
+      "safety_events": [
+        "sensor, telemetry or command timeout"
+      ],
+      "final_controller_state": "STOP",
+      "final_flight_mode": "OFFBOARD",
+      "final_vehicle_state": "landed_disarmed",
+      "navigation_minimum_clearance_m": 3.725677729926309,
+      "full_flight_minimum_clearance_m": 3.7256785308811047,
+      "commanded_forward_m_s": 0.44999999999999996,
+      "collision_event_count": 0,
+      "maximum_full_flight_altitude_m": 1.433351701282942,
+      "evidence": {
+        "outputs/simulation/stale.json": "4af8892b4adb1e80bbac2eaa4e9d0cc1c83bf85dd469f805633b56ec7a2198f5",
+        "outputs/simulation/stale.ulg": "ddf13886120414c719826b5ef61740649adb56eabeb7a4e2fa1ff08ce5d25379",
+        "outputs/simulation/stale.png": "69134f9c0d097be19734848bbb462183ae61864ab70ff884f5317a4a507af98a"
+      }
+    }
+  },
+  "wall_independent_audit": {
+    "kind": "independent inspection of actual wall flight and onboard PX4 ULog",
+    "detection_simulation_time_s": 33.444,
+    "depth_start_m": 5.4247541427612305,
+    "depth_end_m": 1.7012509107589722,
+    "forward_states_after_brake": 0,
+    "nonzero_applied_brake_stop_samples": 0,
+    "state_transitions": [
+      {
+        "time_s": 24.612,
+        "state": "STOP"
+      },
+      {
+        "time_s": 24.64,
+        "state": "FORWARD"
+      },
+      {
+        "time_s": 33.444,
+        "state": "BRAKE"
+      },
+      {
+        "time_s": 33.78,
+        "state": "STOP"
+      },
+      {
+        "time_s": 33.808,
+        "state": "BRAKE"
+      },
+      {
+        "time_s": 34.144,
+        "state": "STOP"
+      },
+      {
+        "time_s": 34.172,
+        "state": "BRAKE"
+      },
+      {
+        "time_s": 34.484,
+        "state": "STOP"
+      },
+      {
+        "time_s": 34.512,
+        "state": "BRAKE"
+      },
+      {
+        "time_s": 34.844,
+        "state": "STOP"
+      },
+      {
+        "time_s": 34.872,
+        "state": "BRAKE"
+      },
+      {
+        "time_s": 35.176,
+        "state": "STOP"
+      },
+      {
+        "time_s": 35.204,
+        "state": "BRAKE"
+      },
+      {
+        "time_s": 35.508,
+        "state": "STOP"
+      },
+      {
+        "time_s": 35.548,
+        "state": "BRAKE"
+      },
+      {
+        "time_s": 35.88,
+        "state": "STOP"
+      },
+      {
+        "time_s": 35.904,
+        "state": "BRAKE"
+      },
+      {
+        "time_s": 36.208,
+        "state": "STOP"
+      },
+      {
+        "time_s": 36.248,
+        "state": "BRAKE"
+      },
+      {
+        "time_s": 36.58,
+        "state": "STOP"
+      },
+      {
+        "time_s": 36.608,
+        "state": "BRAKE"
+      },
+      {
+        "time_s": 36.912,
+        "state": "STOP"
+      },
+      {
+        "time_s": 36.94,
+        "state": "BRAKE"
+      },
+      {
+        "time_s": 37.244,
+        "state": "STOP"
+      },
+      {
+        "time_s": 37.284,
+        "state": "BRAKE"
+      }
+    ],
+    "px4_forward_setpoint_peak_m_s": 0.45000001788139343,
+    "px4_post_brake_setpoint_samples": 19,
+    "px4_post_brake_setpoint_max_m_s": 0.0,
+    "physics_speed_at_detection_m_s": 0.47363710403442383,
+    "physics_speed_final_second_max_m_s": 0.015629053115844727,
+    "first_px4_zero_setpoint_time_s": 33.552,
+    "px4_zero_setpoint_observation_delay_s": 0.10799999999999699
+  },
+  "stale_independent_audit": {
+    "kind": "independent inspection of actual depth-loss flight and onboard PX4 ULog",
+    "interrupted_simulation_time_s": 29.424,
+    "first_inhibit_simulation_time_s": 29.488,
+    "interruption_to_inhibit_wall_s": 0.2595176819959306,
+    "frozen_frame_indices": [
+      549
+    ],
+    "frozen_original_timestamps_s": [
+      29.4
+    ],
+    "nonzero_setpoints_after_inhibit": 0,
+    "px4_post_inhibit_setpoint_max_m_s": 0.0,
+    "px4_post_inhibit_zero_samples": 19,
+    "physics_speed_at_inhibit_m_s": 0.4578484892845154,
+    "physics_speed_final_second_max_m_s": 0.01795814000070095
+  }
+}

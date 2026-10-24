@@ -1,3 +1,5 @@
+PX4 X500/Gazebo simulation: see [GAZEBO_PX4_SIMULATION.md](GAZEBO_PX4_SIMULATION.md) for the separate simulation-only integration, verified actual flight results, initialization fixes and reproducible experiment commands. Clear-path, wall-stop and depth-loss flights passed, alongside 119 tests including real SITL communication.
+
 # Controller, Replay Stand, and Tello integration
 
 The current team workflow is external inference on Yarema's computer and strict

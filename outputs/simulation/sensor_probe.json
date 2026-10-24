@@ -1,0 +1,260 @@
+{
+  "kind": "actual Gazebo static camera probe; no aircraft or PX4",
+  "success": true,
+  "topic": "/depth_camera",
+  "camera_pose": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.5,
+    "qw": 1.0,
+    "qx": 0.0,
+    "qy": 0.0,
+    "qz": 0.0
+  },
+  "contact_publisher_available": true,
+  "sensor_rate_hz": 10.021097046413507,
+  "receive_rate_hz": 10.055471357030811,
+  "samples": [
+    {
+      "index": 1,
+      "frame_timestamp_s": 8.204,
+      "received_monotonic_s": 55701.901688762,
+      "simulation_time_s": 8.22,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 2,
+      "frame_timestamp_s": 8.3,
+      "received_monotonic_s": 55701.992221954,
+      "simulation_time_s": 8.304,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 3,
+      "frame_timestamp_s": 8.4,
+      "received_monotonic_s": 55702.107135882,
+      "simulation_time_s": 8.424,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 4,
+      "frame_timestamp_s": 8.5,
+      "received_monotonic_s": 55702.191701214,
+      "simulation_time_s": 8.504,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 5,
+      "frame_timestamp_s": 8.6,
+      "received_monotonic_s": 55702.290713813,
+      "simulation_time_s": 8.604,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 6,
+      "frame_timestamp_s": 8.7,
+      "received_monotonic_s": 55702.390815583,
+      "simulation_time_s": 8.704,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 7,
+      "frame_timestamp_s": 8.8,
+      "received_monotonic_s": 55702.491580369,
+      "simulation_time_s": 8.808,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 8,
+      "frame_timestamp_s": 8.9,
+      "received_monotonic_s": 55702.590906792,
+      "simulation_time_s": 8.908,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 9,
+      "frame_timestamp_s": 9.0,
+      "received_monotonic_s": 55702.690807171,
+      "simulation_time_s": 9.008,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 10,
+      "frame_timestamp_s": 9.1,
+      "received_monotonic_s": 55702.790429233,
+      "simulation_time_s": 9.108,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 11,
+      "frame_timestamp_s": 9.2,
+      "received_monotonic_s": 55702.890743615,
+      "simulation_time_s": 9.208,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 12,
+      "frame_timestamp_s": 9.3,
+      "received_monotonic_s": 55702.990815378,
+      "simulation_time_s": 9.308,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 13,
+      "frame_timestamp_s": 9.4,
+      "received_monotonic_s": 55703.090863757,
+      "simulation_time_s": 9.412,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 14,
+      "frame_timestamp_s": 9.5,
+      "received_monotonic_s": 55703.191295541,
+      "simulation_time_s": 9.512,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 15,
+      "frame_timestamp_s": 9.6,
+      "received_monotonic_s": 55703.290904568,
+      "simulation_time_s": 9.612,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 16,
+      "frame_timestamp_s": 9.7,
+      "received_monotonic_s": 55703.390934151,
+      "simulation_time_s": 9.712,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 17,
+      "frame_timestamp_s": 9.8,
+      "received_monotonic_s": 55703.490959095,
+      "simulation_time_s": 9.812,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 18,
+      "frame_timestamp_s": 9.9,
+      "received_monotonic_s": 55703.590958401,
+      "simulation_time_s": 9.916,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 19,
+      "frame_timestamp_s": 10.0,
+      "received_monotonic_s": 55703.690831848,
+      "simulation_time_s": 10.016,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    },
+    {
+      "index": 20,
+      "frame_timestamp_s": 10.1,
+      "received_monotonic_s": 55703.791207346,
+      "simulation_time_s": 10.116,
+      "shape": [
+        120,
+        160
+      ],
+      "center_z_m": 6.000000953674316,
+      "finite_fraction": 1.0
+    }
+  ],
+  "error": null
+}

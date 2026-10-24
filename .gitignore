@@ -4,4 +4,16 @@ __pycache__/
 *.egg-info/
 build/
 dist/
-outputs/
+# Ignore generated outputs by default
+outputs/*
+
+# Keep verified simulation evidence
+!outputs/simulation/
+outputs/simulation/*
+
+!outputs/simulation/flight_verification.json
+!outputs/simulation/*.png
+!outputs/simulation/*.csv
+!outputs/simulation/*.json
+
+.venv-simulation/

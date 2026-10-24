@@ -1,0 +1,17 @@
+{
+  "kind": "independent inspection of actual depth-loss flight and onboard PX4 ULog",
+  "interrupted_simulation_time_s": 29.424,
+  "first_inhibit_simulation_time_s": 29.488,
+  "interruption_to_inhibit_wall_s": 0.2595176819959306,
+  "frozen_frame_indices": [
+    549
+  ],
+  "frozen_original_timestamps_s": [
+    29.4
+  ],
+  "nonzero_setpoints_after_inhibit": 0,
+  "px4_post_inhibit_setpoint_max_m_s": 0.0,
+  "px4_post_inhibit_zero_samples": 19,
+  "physics_speed_at_inhibit_m_s": 0.4578484892845154,
+  "physics_speed_final_second_max_m_s": 0.01795814000070095
+}

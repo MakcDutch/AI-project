@@ -1,0 +1,117 @@
+{
+  "kind": "independent inspection of actual wall flight and onboard PX4 ULog",
+  "detection_simulation_time_s": 33.444,
+  "depth_start_m": 5.4247541427612305,
+  "depth_end_m": 1.7012509107589722,
+  "forward_states_after_brake": 0,
+  "nonzero_applied_brake_stop_samples": 0,
+  "state_transitions": [
+    {
+      "time_s": 24.612,
+      "state": "STOP"
+    },
+    {
+      "time_s": 24.64,
+      "state": "FORWARD"
+    },
+    {
+      "time_s": 33.444,
+      "state": "BRAKE"
+    },
+    {
+      "time_s": 33.78,
+      "state": "STOP"
+    },
+    {
+      "time_s": 33.808,
+      "state": "BRAKE"
+    },
+    {
+      "time_s": 34.144,
+      "state": "STOP"
+    },
+    {
+      "time_s": 34.172,
+      "state": "BRAKE"
+    },
+    {
+      "time_s": 34.484,
+      "state": "STOP"
+    },
+    {
+      "time_s": 34.512,
+      "state": "BRAKE"
+    },
+    {
+      "time_s": 34.844,
+      "state": "STOP"
+    },
+    {
+      "time_s": 34.872,
+      "state": "BRAKE"
+    },
+    {
+      "time_s": 35.176,
+      "state": "STOP"
+    },
+    {
+      "time_s": 35.204,
+      "state": "BRAKE"
+    },
+    {
+      "time_s": 35.508,
+      "state": "STOP"
+    },
+    {
+      "time_s": 35.548,
+      "state": "BRAKE"
+    },
+    {
+      "time_s": 35.88,
+      "state": "STOP"
+    },
+    {
+      "time_s": 35.904,
+      "state": "BRAKE"
+    },
+    {
+      "time_s": 36.208,
+      "state": "STOP"
+    },
+    {
+      "time_s": 36.248,
+      "state": "BRAKE"
+    },
+    {
+      "time_s": 36.58,
+      "state": "STOP"
+    },
+    {
+      "time_s": 36.608,
+      "state": "BRAKE"
+    },
+    {
+      "time_s": 36.912,
+      "state": "STOP"
+    },
+    {
+      "time_s": 36.94,
+      "state": "BRAKE"
+    },
+    {
+      "time_s": 37.244,
+      "state": "STOP"
+    },
+    {
+      "time_s": 37.284,
+      "state": "BRAKE"
+    }
+  ],
+  "px4_forward_setpoint_peak_m_s": 0.45000001788139343,
+  "px4_post_brake_setpoint_samples": 19,
+  "px4_post_brake_setpoint_max_m_s": 0.0,
+  "physics_speed_at_detection_m_s": 0.47363710403442383,
+  "physics_speed_final_second_max_m_s": 0.015629053115844727,
+  "first_px4_zero_setpoint_time_s": 33.552,
+  "px4_zero_setpoint_observation_delay_s": 0.10799999999999699
+}

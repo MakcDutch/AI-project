@@ -11,6 +11,7 @@ dependencies = ["numpy>=1.24", "opencv-python>=4.8"]
 
 [project.optional-dependencies]
 live = ["djitellopy>=2.5"]
+simulation = ["mavsdk==3.17.4", "matplotlib>=3.7"]
 
 [project.scripts]
 tello-replay = "tello_nav.cli:main"

@@ -1,0 +1,41 @@
+{
+  "kind": "actual Gazebo dynamic cube versus wall positive control; no aircraft",
+  "success": true,
+  "model_name": "contact_validation_61584798311645",
+  "collision_events": [
+    {
+      "timestamp_s": 2.816,
+      "collision1": {
+        "id": 11,
+        "name": "wall::link::wall_collision"
+      },
+      "collision2": {
+        "id": 20,
+        "name": "contact_validation_61584798311645::link::cube"
+      },
+      "points": 4
+    },
+    {
+      "timestamp_s": 2.8200000000000003,
+      "collision1": {
+        "id": 11,
+        "name": "wall::link::wall_collision"
+      },
+      "collision2": {
+        "id": 20,
+        "name": "contact_validation_61584798311645::link::cube"
+      },
+      "points": 4
+    }
+  ],
+  "simulation_time_s": 2.8200000000000003,
+  "probe_camera_pose": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.5,
+    "qw": 1.0,
+    "qx": 0.0,
+    "qy": 0.0,
+    "qz": 0.0
+  }
+}

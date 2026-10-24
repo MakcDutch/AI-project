@@ -1,0 +1,127 @@
+{
+  "metadata": {
+    "source": "actual Gazebo/PX4 only",
+    "experiment": "wall",
+    "depth_topic": "/depth_camera",
+    "controller": {
+      "min_distance_m": 1.8,
+      "hysteresis_m": 0.35,
+      "max_frame_age_s": 0.5,
+      "brake_duration_s": 0.3,
+      "avoid_hold_s": 0.5,
+      "recovery_frames": 2,
+      "forward_speed": 15,
+      "lateral_speed": 10,
+      "command_limit": 20,
+      "allow_lateral": false,
+      "braking_deceleration_mps2": 0.5,
+      "reaction_latency_s": 0.15,
+      "telemetry_max_age_s": 0.5,
+      "sectors": {
+        "roi": [
+          0.0,
+          0.2,
+          1.0,
+          0.85
+        ],
+        "boundaries": [
+          0.3333333333333333,
+          0.6666666666666666
+        ],
+        "percentile": 10.0,
+        "min_coverage": 0.9,
+        "min_valid_pixels": 16
+      }
+    },
+    "limits": {
+      "rc_limit": 20,
+      "horizontal_m_s": 0.6,
+      "vertical_m_s": 0.3,
+      "yaw_deg_s": 15.0,
+      "altitude_m": 3.0,
+      "travel_m": 8.0,
+      "min_clearance_m": 0.65,
+      "sensor_timeout_s": 0.5,
+      "telemetry_timeout_s": 0.5,
+      "command_timeout_s": 0.3
+    },
+    "events": [
+      "actual Gazebo depth + clock + model pose + MAVSDK telemetry received; no arming",
+      "landing confirmed and disarmed"
+    ],
+    "startup_evidence": {
+      "depth_shape": [
+        480,
+        640
+      ],
+      "frame_timestamp_s": 129.636,
+      "simulation_time_s": 129.648,
+      "gazebo_pose": {
+        "x": -7.102878759122327e-11,
+        "y": -3.540704258644662e-18,
+        "z": -0.013000902413891346,
+        "qw": 1.0,
+        "qx": -1.4509487820188818e-17,
+        "qy": 2.6946703666509706e-09,
+        "qz": -5.3489985757625154e-18
+      },
+      "telemetry": {
+        "connected": true,
+        "north": 0.008440027013421059,
+        "east": -0.04786769673228264,
+        "down": -0.020331695675849915,
+        "vn": 0.006725997664034367,
+        "ve": -0.01615377888083458,
+        "vd": -0.001061765244230628,
+        "received": 62505.12502856,
+        "sim_received": 129.916,
+        "connection_received": 62505.045454154,
+        "yaw_deg": 96.02772521972656,
+        "roll_deg": 0.0017936073709279299,
+        "pitch_deg": 0.05208467319607735,
+        "attitude_received": 62505.236848939,
+        "mode": "HOLD",
+        "mode_received": 62505.17351659,
+        "in_air": false
+      }
+    },
+    "collision_events": [],
+    "telemetry_history": [
+      {
+        "monotonic_time_s": 62505.12502856,
+        "simulation_time_s": 129.916,
+        "gazebo_pose": {
+          "x": -7.102878759122327e-11,
+          "y": -3.540704258644662e-18,
+          "z": -0.013000902413891346,
+          "qw": 1.0,
+          "qx": -1.4509487820188818e-17,
+          "qy": 2.6946703666509706e-09,
+          "qz": -5.3489985757625154e-18
+        },
+        "north_m": 0.008440027013421059,
+        "east_m": -0.04786769673228264,
+        "down_m": -0.020331695675849915,
+        "vn_m_s": 0.006725997664034367,
+        "ve_m_s": -0.01615377888083458,
+        "vd_m_s": -0.001061765244230628,
+        "yaw_deg": 0.0,
+        "in_air": false,
+        "flight_mode": "UNKNOWN"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "sitl_heartbeat_5hz",
+        "monotonic_time_s": 62504.101749494
+      }
+    ],
+    "summary": {
+      "smoke": true,
+      "success": true,
+      "error": null,
+      "armed": false
+    }
+  },
+  "records": []
+}

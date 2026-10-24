@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "source": "actual Gazebo/PX4 only",
+    "experiment": "clear",
+    "depth_topic": "/depth_camera",
+    "controller": {
+      "min_distance_m": 1.8,
+      "hysteresis_m": 0.35,
+      "max_frame_age_s": 0.5,
+      "brake_duration_s": 0.3,
+      "avoid_hold_s": 0.5,
+      "recovery_frames": 2,
+      "forward_speed": 15,
+      "lateral_speed": 10,
+      "command_limit": 20,
+      "allow_lateral": false,
+      "braking_deceleration_mps2": 0.5,
+      "reaction_latency_s": 0.15,
+      "telemetry_max_age_s": 0.5,
+      "sectors": {
+        "roi": [
+          0.0,
+          0.2,
+          1.0,
+          0.85
+        ],
+        "boundaries": [
+          0.3333333333333333,
+          0.6666666666666666
+        ],
+        "percentile": 10.0,
+        "min_coverage": 0.9,
+        "min_valid_pixels": 16
+      }
+    },
+    "limits": {
+      "rc_limit": 20,
+      "horizontal_m_s": 0.6,
+      "vertical_m_s": 0.3,
+      "yaw_deg_s": 15.0,
+      "altitude_m": 3.0,
+      "travel_m": 8.0,
+      "min_clearance_m": 0.65,
+      "sensor_timeout_s": 0.5,
+      "telemetry_timeout_s": 0.5,
+      "command_timeout_s": 0.3
+    },
+    "events": [
+      "landing confirmed and disarmed"
+    ],
+    "startup_evidence": null,
+    "collision_events": [],
+    "summary": {
+      "experiment": "clear",
+      "success": false,
+      "error": "TimeoutError: ",
+      "measurement_gaps": false,
+      "collision": null,
+      "contact_monitor_verified": false,
+      "minimum_clearance_m": null,
+      "actual_stopping_distance_m": null,
+      "detection_to_stop_s": null,
+      "peak_velocity_m_s": 0,
+      "travel_m": 0,
+      "depth_decreased": false,
+      "safety_events": [],
+      "final_controller_state": null,
+      "final_flight_mode": null,
+      "final_vehicle_state": "not_armed"
+    }
+  },
+  "records": []
+}

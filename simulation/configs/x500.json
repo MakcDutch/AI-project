@@ -1,0 +1,23 @@
+{
+  "controller": {
+    "min_distance_m": 1.8,
+    "hysteresis_m": 0.35,
+    "max_frame_age_s": 0.5,
+    "forward_speed": 15,
+    "command_limit": 20,
+    "allow_lateral": false,
+    "braking_deceleration_mps2": 0.5,
+    "reaction_latency_s": 0.15,
+    "telemetry_max_age_s": 0.5
+  },
+  "limits": {
+    "horizontal_m_s": 0.6,
+    "vertical_m_s": 0.3,
+    "altitude_m": 3.0,
+    "travel_m": 8.0,
+    "min_clearance_m": 0.65,
+    "sensor_timeout_s": 0.5,
+    "telemetry_timeout_s": 0.5,
+    "command_timeout_s": 0.3
+  }
+}

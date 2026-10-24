@@ -1,0 +1,29 @@
+{
+  "kind": "actual recovery after initialization watchdog terminated SDK",
+  "mavlink": {
+    "HEARTBEAT": {
+      "mavpackettype": "HEARTBEAT",
+      "type": 2,
+      "autopilot": 12,
+      "base_mode": 17,
+      "custom_mode": 393216,
+      "system_status": 0,
+      "mavlink_version": 3
+    },
+    "EXTENDED_SYS_STATE": {
+      "mavpackettype": "EXTENDED_SYS_STATE",
+      "vtol_state": 0,
+      "landed_state": 1
+    }
+  },
+  "gazebo_pose": {
+    "x": -0.04260707717277561,
+    "y": -0.015239386238646374,
+    "z": -0.01300023556495028,
+    "qw": 0.9999996108529342,
+    "qx": -1.661336767892221e-07,
+    "qy": 5.634915222225494e-07,
+    "qz": -0.00088220951882388
+  },
+  "simulation_time_s": 35.54
+}

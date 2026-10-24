@@ -1,0 +1,6 @@
+# PX4 v1.16.0 Python build dependencies absent from the initial environment.
+# The full upstream Tools/setup/requirements.txt remains authoritative.
+empy==3.3.4
+kconfiglib==14.1.0
+toml==0.10.2
+pyros-genmsg==0.5.8
